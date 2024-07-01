@@ -11,7 +11,7 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 export class AppComponent {
   title = 'employeeapplication';
 
-  constructor(public _dialog: MatDialog){
+  constructor(private _dialog: MatDialog){
 
   }
   openEmployeeDialog()
