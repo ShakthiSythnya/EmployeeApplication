@@ -9,7 +9,10 @@ import {Employee} from '../models/employee';
 export class EmployeeEditComponent implements OnInit {
 
   employeeDetail !:Employee;
+  education:string[] = ['B.Tech', 'B.Com']
   constructor() { }
+
+
 
   ngOnInit(): void {
   }
