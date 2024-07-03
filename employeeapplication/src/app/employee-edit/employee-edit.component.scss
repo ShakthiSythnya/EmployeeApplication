@@ -1,9 +1,13 @@
 .row{
     display: flex;
     gap: 5px;
+    width: 100%;
     
     mat-form-field {
         width: 100%;
+        ::ng-deep .mat-form-field-infix {
+            width: 100%;
+        }
     }
 }
 
@@ -14,4 +18,11 @@
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
   }
+
+.action{
+    button {
+        flex: 1;
+
+    }
+}
   

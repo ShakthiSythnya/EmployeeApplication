@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "employees": [
+    {
+      "firstName": "asdf",
+      "lastName": "asd",
+      "dateOfBirth": "2024-07-08T18:30:00.000Z",
+      "gender": "male",
+      "package": 2323231,
+      "experience": 5,
+      "education": "B.Com",
+      "company": "hoiio",
+      "email": "sshhasy@gmail.com",
+      "id": 1
+    }
+  ]
+}
