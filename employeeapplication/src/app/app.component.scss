@@ -4,18 +4,31 @@
 .example-spacer {
     flex: 1 1 auto;
    }
-// .toolbar {
-//     color: white;
-//     background-color: rgb(8, 8, 132);
-// }
-// .button-icon{
-//     width: auto;
-//     margin: 5px;
-//     color:  rgb(8, 8, 132);
-//     background-color: white;
-//     font-weight: bold;
-// }
+
 .addEmployee{
     color: white;
     text-decoration-color: darkblue;
 }
+
+  
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
+  .table-container{
+    width: 1248px;
+    padding-top: 20px;
+    margin: 0 auto;
+        mat-form-field {
+        width: 100%;   
+        }
+  }
