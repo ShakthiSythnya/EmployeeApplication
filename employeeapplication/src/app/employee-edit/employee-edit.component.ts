@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {Employee} from '../models/employee';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeServiceService } from '../services/employee-service.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { inject } from '@angular/core/testing';
 
 @Component({
   selector: 'app-employee-edit',
@@ -28,24 +29,39 @@ export class EmployeeEditComponent implements OnInit {
   education:string[] = ['B.Tech', 'B.Com'];
 
 
-  constructor(private _formBuilder: FormBuilder, private _employeeService: EmployeeServiceService, private _diagRef:MatDialogRef<EmployeeEditComponent> ) { 
+  constructor(private _formBuilder: FormBuilder,
+    private _employeeService: EmployeeServiceService, 
+    private _diagRef:MatDialogRef<EmployeeEditComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any) { 
     this.empForm = _formBuilder.group(this.employeeDetail)
   }
   onSave(){
     console.log(this.empForm);
-    this._employeeService.saveEmployee(this.empForm.value).subscribe({
+    if(this.data !== null && this.data.id){
+      this._employeeService.updateEmployees(this.data.id, this.empForm.value).subscribe({
+        next:(val)=>{
+          alert("Data updated!!");
+          this._diagRef.close(true);
+        }
+      })
+
+    }
+    else{
+          this._employeeService.saveEmployee(this.empForm.value).subscribe({
       next: (val: any)=>
       { 
         alert("Dave Saved1");
-        this._diagRef.close();
+        this._diagRef.close(true);
         console.log(val);
       },
       error:(err:any)=>{console.log(err);}
     });
   }
+  }
 
 
   ngOnInit(): void {
+    this.empForm.patchValue(this.data)
   }
 
 }

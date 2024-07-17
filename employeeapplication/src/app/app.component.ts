@@ -13,7 +13,7 @@ import { Employee } from './models/employee';
 
 })
 export class AppComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'dateOfBirth', 'company','education','email', 'package', 'experience', 'gender'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'dateOfBirth', 'company','education','email', 'package', 'experience', 'gender', 'action'];
 
   title = 'employeeapplication';
   dataSource!: MatTableDataSource<Employee>;
@@ -29,7 +29,15 @@ export class AppComponent implements OnInit {
   }
   openEmployeeDialog()
   {
-    this._dialog.open(EmployeeEditComponent);
+    const dialogRef = this._dialog.open(EmployeeEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next:val=>{
+        if(val){
+          console.log("val: ",val)
+          this.getEmployees();
+        }
+      }
+    })
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -49,6 +57,29 @@ export class AppComponent implements OnInit {
        return val;
       },
       error: console.log
+    })
+  }
+  deleteEmployee(id:any)
+  {
+    this._employeeService.deleteEmployees(id).subscribe({
+      next:(val:any)=>{
+        console.log(val);
+        alert("Data deleted successfully!");
+        this.getEmployees();
+      }
+    })
+  }
+  editEmployee(data:Employee)
+  {
+    const ref = this._dialog.open(EmployeeEditComponent,{
+      data
+    });
+    ref.afterClosed().subscribe({
+      next:(val)=>{
+        if(val)
+        {this.getEmployees();}
+
+      } 
     })
   }
 

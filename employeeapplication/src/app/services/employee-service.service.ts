@@ -18,4 +18,14 @@ export class EmployeeServiceService {
   {
     return this.httpClient.get("http://localhost:3000/employees");
   }
+
+  deleteEmployees(id:number)
+  {
+    return this.httpClient.delete(`http://localhost:3000/employees/${id}`);
+  }
+
+  updateEmployees(id:number, emp:Employee)
+  {
+    return this.httpClient.put(`http://localhost:3000/employees/${id}`, emp);
+  }
 }
