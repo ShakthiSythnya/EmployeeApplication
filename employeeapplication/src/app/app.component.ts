@@ -6,6 +6,8 @@ import { MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { Employee } from './models/employee';
+import { CoreService } from './services/core.service';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +23,7 @@ export class AppComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _dialog: MatDialog, private _employeeService: EmployeeServiceService){
+  constructor(private _dialog: MatDialog, private _employeeService: EmployeeServiceService, private _coreService: CoreService){
 
   }
   ngOnInit(): void {
@@ -61,13 +63,21 @@ export class AppComponent implements OnInit {
   }
   deleteEmployee(id:any)
   {
-    this._employeeService.deleteEmployees(id).subscribe({
-      next:(val:any)=>{
-        console.log(val);
-        alert("Data deleted successfully!");
-        this.getEmployees();
+   const dia =  this._dialog.open(ConfirmationDialogComponent);
+   dia.afterClosed().subscribe({
+    next:(val)=>{
+      if(val)
+      {
+        this._employeeService.deleteEmployees(id).subscribe({
+          next:(val:any)=>{
+            console.log(val);
+            this._coreService.openNotification(`Employee of id ${id} deleted successfully`, "Ok");
+                    this.getEmployees();
+          }
+        });
       }
-    })
+    }
+   });    
   }
   editEmployee(data:Employee)
   {

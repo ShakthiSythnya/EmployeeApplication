@@ -12,6 +12,7 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 import {
   MatDialogModule
 } from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -22,11 +23,13 @@ import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeEditComponent
+    EmployeeEditComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { MatSortModule } from '@angular/material/sort';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

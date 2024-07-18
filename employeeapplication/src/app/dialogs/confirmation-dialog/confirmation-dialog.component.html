@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Delete Employee</h2>
+<mat-dialog-content>
+  Do you confirm?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn" (click)="Selection('no')">No</button>
+  <button mat-raised-button mat-dialog-close cdkFocusInitial color="primary" (click)="Selection('Ok')">Ok</button>
+</mat-dialog-actions>

@@ -18,42 +18,6 @@
   },
   "employees": [
     {
-      "firstName": "test",
-      "lastName": "asd",
-      "dateOfBirth": "2024-07-08T18:30:00.000Z",
-      "gender": "female",
-      "package": 10,
-      "experience": 10,
-      "education": "B.Tech",
-      "company": "hoiio",
-      "email": "sshhasy@gmail.com",
-      "id": 3
-    },
-    {
-      "firstName": "wae",
-      "lastName": "asd",
-      "dateOfBirth": "2024-06-30T18:30:00.000Z",
-      "gender": "female",
-      "package": 8,
-      "experience": 99,
-      "education": "B.Com",
-      "company": "hoiio",
-      "email": "1qwqssy@gmail.com",
-      "id": 4
-    },
-    {
-      "firstName": "smi",
-      "lastName": "wwe",
-      "dateOfBirth": "2000-12-31T18:30:00.000Z",
-      "gender": "male",
-      "package": 123,
-      "experience": 21,
-      "education": "B.Com",
-      "company": "Googl",
-      "email": "awe@gma.com",
-      "id": 5
-    },
-    {
       "firstName": "weq",
       "lastName": "ws",
       "dateOfBirth": "2024-06-30T18:30:00.000Z",
